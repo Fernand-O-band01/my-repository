@@ -40,21 +40,20 @@
     <section id="welcome" class="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row justify-center items-center md:items-center gap-8 md:gap-16 lg:gap-32 pb-12 w-full">
         
         {/* TEXTO */}
-        <div class="flex flex-col items-center md:items-start gap-6 flex-1">
-            <div class="flex items-start gap-3">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-code text-dev-primary transition-colors duration-300 text-center md:text-left leading-tight">
-                    Fernando <br class="hidden lg:block" /> Obando
-                </h1>
+        <div class="flex flex-col items-center md:items-start gap-6 flex-1 w-full">
+            
+            {/* Título con el logo integrado en la misma línea */}
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-code text-dev-primary transition-colors duration-300 text-center md:text-left leading-tight">
+                Fernando 
                 
-                <div class="mt-4 md:mt-6 animate-pulse">
-                    <a href="https://vanter.net">
-                        <img src="/src/assets/vanter-tech_logo_negative.png" alt="Vanter Tech Logo" class="w-12 h-12 rounded-2xl block light:hidden" />
-                    </a>
-                    <a href="https://vanter.net">
-                        <img src="/src/assets/vanter-tech_logo.png" alt="Vanter Tech Logo" class="w-12 h-12 rounded-2xl hidden light:block" />
-                    </a>
-                </div>
-            </div>
+                {/* Contenedor inline: Se comporta como texto. align-middle lo centra con las letras */}
+                <span class="inline-flex align-middle mx-1 md:mx-3 -mt-2 md:-mt-3 animate-pulse">
+                    <img src="/src/assets/vanter-tech_logo_negative.png" alt="Vanter Tech Logo" class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl block light:hidden" />
+                    <img src="/src/assets/vanter-tech_logo.png" alt="Vanter Tech Logo" class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl hidden light:block" />
+                </span>
+                
+                <br class="hidden lg:block" /> Obando
+            </h1>
             
             {/* Párrafo más grande: md:text-xl, max-w aumentado */}
             <p class="text-lg md:text-xl text-center md:text-left text-dev-muted max-w-2xl leading-relaxed transition-colors duration-300">
@@ -64,7 +63,6 @@
             </p>
 
             <div class="mt-4 flex gap-4">
-              {/* Botón ligeramente más grande */}
               <a href="#projects" class="px-8 py-4 bg-dev-primary text-dev-bg font-code font-bold text-sm tracking-widest rounded-full hover:opacity-90 transition-opacity duration-300">
                 VER PROYECTOS
               </a>
@@ -79,4 +77,6 @@
         </div>
         
     </section>
+    
   </main>
+  
