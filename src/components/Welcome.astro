@@ -1,25 +1,72 @@
----
+{/* Flexbox controlado: aumentamos ligeramente el padding inferior en PC (md:pb-12) */}
+  <main class="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-start md:justify-center px-4 sm:px-6 lg:px-8 mt-20 md:mt-0 pt-12 md:pt-32 pb-24 md:pb-12">
+    
+    {/* FONDO ANIMADO (MARQUEES) */}
+    <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none flex items-center justify-center">
+      
+      {/* BARRA 1 (Translúcida) - La bajamos un poco más en PC (lg:translate-y-[55vh]) para dar espacio al contenido más grande */}
+      <div class="absolute w-[250vw] rotate-0 md:-rotate-12 translate-y-[38vh] lg:translate-y-[55vh] bg-dev-surface border-y border-dev-border py-3 md:py-4 flex shadow-xl transition-transform duration-500">
+        <div class="flex w-max animate-marquee text-dev-primary font-code text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase">
+          {[...Array(12)].map(() => (
+            <div class="flex items-center justify-around w-max shrink-0 px-4 md:px-8">
+              <span class="mx-4 md:mx-8 flex items-center gap-3 md:gap-4"><span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-500 shrink-0"></span> UI/UX</span>
+              <span class="mx-4 md:mx-8 flex items-center gap-3 md:gap-4"><span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-500 shrink-0"></span> PROGRAMING</span>
+              <span class="mx-4 md:mx-8 flex items-center gap-3 md:gap-4"><span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-500 shrink-0"></span> CS</span>
+              <span class="mx-4 md:mx-8 flex items-center gap-3 md:gap-4"><span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-500 shrink-0"></span> BACKEND</span>
+              <span class="mx-4 md:mx-8 flex items-center gap-3 md:gap-4"><span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-500 shrink-0"></span> DEVELOPMENT</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
----
-<main class="w-full pt-32 px-4"> 
-    <section class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row justify-center items-center gap-12 md:gap-24 pb-12">
-        <div class="flex flex-col items-center md:items-start gap-4">
+      {/* BARRA 2 (Sólida) - La empujamos un poco más a la derecha en PC (lg:translate-x-[55vw]) */}
+      <div class="hidden md:flex absolute w-[250vw] rotate-[25deg] translate-x-[45vw] lg:translate-x-[55vw] bg-dev-primary text-dev-bg py-5 shadow-2xl transition-transform duration-500">
+        <div class="flex w-max animate-marquee text-dev-bg font-code text-base sm:text-xl font-bold tracking-widest uppercase" style="animation-direction: reverse;">
+          {[...Array(12)].map(() => (
+            <div class="flex items-center justify-around w-max shrink-0 px-8">
+              <span class="mx-8 flex items-center gap-4"><span class="w-3 h-3 rounded-full bg-dev-bg shrink-0"></span> FULLSTACK</span>
+              <span class="mx-8 flex items-center gap-4"><span class="w-3 h-3 rounded-full bg-dev-bg shrink-0"></span> CLEAN</span>
+              <span class="mx-8 flex items-center gap-4"><span class="w-3 h-3 rounded-full bg-dev-bg shrink-0"></span> CODE</span>
+              <span class="mx-8 flex items-center gap-4"><span class="w-3 h-3 rounded-full bg-dev-bg shrink-0"></span> AI</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    {/* CONTENIDO PRINCIPAL */}
+    {/* Aumentamos max-w-4xl a max-w-6xl para permitir que el contenido crezca */}
+    <section id="welcome" class="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row justify-center items-center md:items-center gap-8 md:gap-16 lg:gap-32 pb-12 w-full">
+        
+        {/* TEXTO */}
+        <div class="flex flex-col items-center md:items-start gap-6 flex-1">
+            {/* Título más grande: md:text-6xl lg:text-7xl */}
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-code text-dev-primary transition-colors duration-300 text-center md:text-left leading-tight">
+                Fernando <br class="hidden lg:block" /> Obando
+            </h1>
             
-            <h2 class="text-4xl md:text-5xl font-bold font-code">
-                Fernando Obando
-            </h2>
-            
-            <p class="text-lg text-center md:text-left text-muted max-w-xl leading-relaxed">
+            {/* Párrafo más grande: md:text-xl, max-w aumentado */}
+            <p class="text-lg md:text-xl text-center md:text-left text-dev-muted max-w-2xl leading-relaxed transition-colors duration-300">
                 Desarrollador Backend y Web especializado en construir sistemas escalables y arquitecturas robustas. 
                 Transforma lógica de negocio compleja en APIs eficientes y experiencias web fluidas, dominando el ecosistema Java 
                 y Spring Boot.
             </p>
+
+            <div class="mt-4 flex gap-4">
+              {/* Botón ligeramente más grande */}
+              <a href="#projects" class="px-8 py-4 bg-dev-primary text-dev-bg font-code font-bold text-sm tracking-widest rounded-full hover:opacity-90 transition-opacity duration-300">
+                VER PROYECTOS
+              </a>
+            </div>
         </div>
 
-        <div class="shrink-0 mb-6 md:mb-0">
-            <img class="rounded-full h-48 w-48 md:h-64 md:w-64 object-cover shadow-xl" 
-            src="/src/assets/web-photo.webp" alt="Foto de perfil de Fernando Obando">
+        {/* FOTO */}
+        <div class="shrink-0 mb-6 md:mb-0 relative group">
+            {/* Imagen mucho más grande en PC: md:w-80 md:h-80 lg:w-96 lg:h-96 */}
+            <img class="rounded-full h-48 w-48 md:h-80 md:w-80 lg:h-96 lg:w-96 object-cover shadow-[0_0_40px_rgba(0,0,0,0.5)] border-4 border-dev-surface transition-all duration-500 bg-dev-bg group-hover:scale-105" 
+            src="/src/assets/web-photo.webp" alt="Fernando Obando - Backend Developer">
         </div>
         
     </section>
-</main>
+  </main>

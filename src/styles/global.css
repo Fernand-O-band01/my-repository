@@ -41,4 +41,11 @@
   --color-dev-surface-hover: var(--dev-surface-hover);
   --color-dev-muted: var(--dev-text-muted);
   --font-code: 'JetBrains Mono', monospace;
+
+  --animate-marquee: marquee 35s linear infinite;
+
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
 }
