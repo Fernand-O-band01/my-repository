@@ -1,10 +1,11 @@
-{/* Flexbox controlado: aumentamos ligeramente el padding inferior en PC (md:pb-12) */}
-  <main class="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-start md:justify-center px-4 sm:px-6 lg:px-8 mt-20 md:mt-0 pt-12 md:pt-32 pb-24 md:pb-12">
+{/* Flexbox controlado: aumentamos padding lateral para proteger los bordes */}
+  <main class="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-start md:justify-center mt-20 md:mt-0 pt-12 md:pt-32 pb-24 md:pb-12 px-8 md:px-16 lg:px-0">
     
     {/* FONDO ANIMADO (MARQUEES) */}
+    {/* El absolute se ancla al body, no al main, por lo que no se ve afectado por el padding lateral */}
     <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none flex items-center justify-center">
       
-      {/* BARRA 1 (Translúcida) - La bajamos un poco más en PC (lg:translate-y-[55vh]) para dar espacio al contenido más grande */}
+      {/* BARRA 1 (Translúcida) */}
       <div class="absolute w-[250vw] rotate-0 md:-rotate-22 translate-y-[38vh] lg:translate-y-[45vh] bg-dev-surface border-y border-dev-border py-3 md:py-4 flex shadow-xl transition-transform duration-500">
         <div class="flex w-max animate-marquee text-dev-primary font-code text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase">
           {[...Array(12)].map(() => (
@@ -17,9 +18,9 @@
             </div>
           ))}
         </div>
-      </div>                                                                                                                                                                                 
+      </div>                                                                                                                                                                                                                                       
 
-      {/* BARRA 2 (Sólida) - La empujamos un poco más a la derecha en PC (lg:translate-x-[55vw]) */}
+      {/* BARRA 2 (Sólida) */}
       <div class="hidden md:flex absolute w-[250vw] rotate-[25deg] translate-x-[65vw] lg:translate-x-[55vw] bg-dev-primary text-dev-bg py-5 shadow-2xl transition-transform duration-500">
         <div class="flex w-max animate-marquee text-dev-bg font-code text-base sm:text-xl font-bold tracking-widest uppercase" style="animation-direction: reverse;">
           {[...Array(12)].map(() => (
@@ -32,36 +33,35 @@
           ))}
         </div>
       </div>
+    </div>
 
     {/* CONTENIDO PRINCIPAL */}
-    {/* Aumentamos max-w-4xl a max-w-6xl para permitir que el contenido crezca */}
-    <section id="welcome" class="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row justify-center items-center md:items-center gap-8 md:gap-16 lg:gap-32 pb-12 w-full">
+    {/* Quitamos el w-full conflictivo. Dejamos max-w-6xl y mx-auto para centrar en pantallas grandes */}
+    <section id="welcome" class="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row justify-center md:items-center gap-8 md:gap-16 lg:gap-32 pb-12">
         
         {/* TEXTO */}
-        <div class="flex flex-col items-center md:items-start gap-6 flex-1 w-full">
+        <div class="flex flex-col items-center md:items-start gap-6 flex-1">
             
-            {/* Título con el logo integrado en la misma línea */}
+            {/* Título con el logo integrado */}
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-code text-dev-primary transition-colors duration-300 text-center md:text-left leading-tight">
                 Fernando 
-                
-                {/* Contenedor inline: Se comporta como texto. align-middle lo centra con las letras */}
                 <span class="inline-flex align-middle mx-1 md:mx-3 -mt-2 md:-mt-3 animate-pulse">
                     <img src="/src/assets/vanter-tech_logo_negative.png" alt="Vanter Tech Logo" class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl block light:hidden" />
                     <img src="/src/assets/vanter-tech_logo.png" alt="Vanter Tech Logo" class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl hidden light:block" />
                 </span>
-                
                 <br class="hidden lg:block" /> Obando
             </h1>
             
-            {/* Párrafo más grande: md:text-xl, max-w aumentado */}
+            {/* Párrafo */}
             <p class="text-lg md:text-xl text-center md:text-left text-dev-muted max-w-2xl leading-relaxed transition-colors duration-300">
                 Desarrollador Backend y Web especializado en construir sistemas escalables y arquitecturas robustas. 
                 Transforma lógica de negocio compleja en APIs eficientes y experiencias web fluidas, dominando el ecosistema Java 
                 y Spring Boot.
             </p>
 
-            <div class="mt-4 flex gap-4">
-              <a href="projects" class="cursor-pointer px-8 py-4 bg-dev-primary text-dev-bg font-code font-bold text-sm tracking-widest rounded-full hover:opacity-90 transition-opacity duration-300">
+            {/* BOTÓN (Reparado: href con # y pointer-events-auto) */}
+            <div class="mt-4 flex gap-4 relative z-50 pointer-events-auto">
+              <a href="projects" class="cursor-pointer px-8 py-4 bg-dev-primary text-dev-bg font-code font-bold text-sm tracking-widest rounded-full hover:opacity-90 transition-opacity duration-300 shadow-lg hover:shadow-xl">
                 VER PROYECTOS
               </a>
             </div>
@@ -69,12 +69,9 @@
 
         {/* FOTO */}
         <div class="shrink-0 mb-6 md:mb-0 relative group">
-            {/* Imagen mucho más grande en PC: md:w-80 md:h-80 lg:w-96 lg:h-96 */}
             <img class="rounded-full h-48 w-48 md:h-80 md:w-80 lg:h-96 lg:w-96 object-cover shadow-[0_0_40px_rgba(0,0,0,0.5)] border-4 border-dev-surface transition-all duration-500 bg-dev-bg group-hover:scale-105" 
             src="/src/assets/web-photo.webp" alt="Fernando Obando - Backend Developer">
         </div>
         
     </section>
-    
   </main>
-  
